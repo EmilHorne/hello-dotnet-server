@@ -25,7 +25,16 @@ namespace HelloDotNet
                 Environment.Exit(1);
             }
 
-            var ldConfig = Configuration.Default(SdkKey);
+
+	        var ldConfig = Configuration.Builder(SdkKey)
+    		    .ApplicationInfo(
+                    Components.ApplicationInfo()
+                    .ApplicationId("example-app-component")
+                    .ApplicationName("Example-App-Component")
+                    .ApplicationVersion("1.0.0")
+                    .ApplicationVersionName("v1.0.0")
+                )
+    	        .Build();
 
             var client = new LdClient(ldConfig);
 
